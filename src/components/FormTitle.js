@@ -6,9 +6,11 @@ class FormTitle extends React.Component {
       <div>
         <label htmlFor='title'>Title</label>
         <input
+          required
           type='text'
           id='title'
           className='u-full-width'
+          value={this.value}
           onChange={(e) => this.props.titleHandler(e.target.value)}
         />
       </div>

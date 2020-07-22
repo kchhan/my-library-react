@@ -6,6 +6,7 @@ class FormAuthor extends React.Component {
       <div>
         <label htmlFor='author'>Author</label>
         <input
+          required
           type='text'
           id='author'
           className='u-full-width'

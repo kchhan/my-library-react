@@ -6,6 +6,7 @@ class FormPages extends React.Component {
       <div>
         <label htmlFor='pages'>Pages</label>
         <input
+          required
           type='number'
           id='pages'
           className='u-full-width'

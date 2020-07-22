@@ -4,14 +4,15 @@ class FormRead extends React.Component {
   render() {
     return (
       <div>
-        <label htmlFor='read'>Title</label>
+        <label htmlFor='read'>Read</label>
         <select
           id='read'
           className='u-full-width'
           onChange={(e) => this.props.readHandler(e.target.value)}
         >
-          <option value='yes'>Yes</option>
-          <option value='no'>No</option>
+          <option value=''>--</option>
+          <option value='Yes'>Yes</option>
+          <option value='No'>No</option>
         </select>
       </div>
     );

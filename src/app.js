@@ -21,25 +21,25 @@ class Entry {
 
     list.appendChild(row);
   }
-  
+
   showAlert(message, className) {
     const div = document.createElement('div');
     div.className = `alert ${className}`;
     div.appendChild(document.createTextNode(message));
     const container = document.querySelector('.container');
-    const form = document.querySelector('#book-form')
+    const form = document.querySelector('#book-form');
     container.insertBefore(div, form);
-    setTimeout(function(){
+    setTimeout(function () {
       document.querySelector('.alert').remove();
     }, 3000);
   }
 
   deleteBook(target) {
-    if(target.className === 'delete') {
+    if (target.className === 'delete') {
       target.parentElement.parentElement.remove();
     }
   }
-  
+
   clearFields() {
     document.querySelector('#title').value = '';
     document.querySelector('#author').value = '';
@@ -52,10 +52,10 @@ class Entry {
 class Store {
   static getBooks() {
     let books;
-    if(localStorage.getItem('books') === null) {
+    if (localStorage.getItem('books') === null) {
       books = [];
     } else {
-      books = JSON.parse(localStorage.getItem('books'))
+      books = JSON.parse(localStorage.getItem('books'));
     }
     return books;
   }
@@ -69,8 +69,8 @@ class Store {
   static removeBook(title) {
     const books = Store.getBooks();
 
-    books.forEach(function(book, index){
-      if(book.title === title) {
+    books.forEach(function (book, index) {
+      if (book.title === title) {
         books.splice(index, 1);
       }
     });
@@ -80,23 +80,20 @@ class Store {
 
   static displayBooks() {
     const books = Store.getBooks();
-  
-    books.forEach(function(book){
-      const entry = new Entry;
-  
+
+    books.forEach(function (book) {
+      const entry = new Entry();
+
       entry.addBookToList(book);
     });
   }
-
-  
-};
+}
 
 // DOM Load Event
 document.addEventListener('DOMContentLoaded', Store.displayBooks);
 
-
 // Event Listeners
-document.querySelector('#book-form').addEventListener('submit', function(e){
+document.querySelector('#book-form').addEventListener('submit', function (e) {
   const title = document.querySelector('#title').value;
   const author = document.querySelector('#author').value;
   const pages = document.querySelector('#pages').value;
@@ -106,7 +103,7 @@ document.querySelector('#book-form').addEventListener('submit', function(e){
 
   const entry = new Entry();
 
-  if(title === '' || author === '' || pages === '') {
+  if (title === '' || author === '' || pages === '') {
     entry.showAlert('Please fill in all fields', 'error');
   } else {
     entry.addBookToList(book);
@@ -119,11 +116,13 @@ document.querySelector('#book-form').addEventListener('submit', function(e){
 });
 
 // Event Listener for delete
-document.querySelector('#book-list').addEventListener('click', function(e){
+document.querySelector('#book-list').addEventListener('click', function (e) {
   const entry = new Entry();
   entry.deleteBook(e.target);
-  Store.removeBook(e.target.parentElement.parentElement.firstElementChild.textContent);
-  entry.showAlert('Book Removed!', 'success')
+  Store.removeBook(
+    e.target.parentElement.parentElement.firstElementChild.textContent
+  );
+  entry.showAlert('Book Removed!', 'success');
 
   e.preventDefault();
 });

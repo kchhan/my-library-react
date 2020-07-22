@@ -9,6 +9,7 @@ class ListHead extends React.Component {
           <th>Author</th>
           <th>Pages</th>
           <th>Read</th>
+          <th></th>
         </tr>
       </thead>
     );

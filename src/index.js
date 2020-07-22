@@ -1,8 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import Form from "./components/Form";
-import List from "./components/List";
+import Library from './components/Library'
 
 class App extends React.Component {
   constructor(props) {
@@ -12,8 +11,7 @@ class App extends React.Component {
     return (
       <main className="container">
         <h1>My Library</h1>
-        <Form />
-        <List />
+        <Library />
       </main>
     );
   }

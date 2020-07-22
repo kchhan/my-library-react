@@ -15,16 +15,19 @@ class Form extends React.Component {
       pages: '',
       read: '',
     };
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.submitForm = this.submitForm.bind(this);
     this.getTitle = this.getTitle.bind(this);
     this.getAuthor = this.getAuthor.bind(this);
     this.getPages = this.getPages.bind(this);
     this.getRead = this.getRead.bind(this);
   }
 
-  handleSubmit(e) {
+  submitForm(e) {
     e.preventDefault();
-    console.log(this.state);
+    if (this.state.read === '') {
+      throw Error('Please choose Yes or No');
+    }
+    this.props.handleSubmit(this.state);
   }
 
   getTitle(titleValue) {
@@ -51,15 +54,14 @@ class Form extends React.Component {
     });
   }
 
-
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.submitForm}>
         <h4>Add A Book</h4>
         <FormTitle titleHandler={this.getTitle} />
-        <FormAuthor authorHandler={this.getAuthor}/>
-        <FormPages pagesHandler={this.getPages}/>
-        <FormRead readHandler={this.getRead}/>
+        <FormAuthor authorHandler={this.getAuthor} />
+        <FormPages pagesHandler={this.getPages} />
+        <FormRead readHandler={this.getRead} />
         <FormSubmit />
       </form>
     );
