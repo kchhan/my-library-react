@@ -1,6 +1,6 @@
 # A Minimal Styled BookList Recreated With React
 
-Live Site: https://kchhan.github.io/my-library-react/ <br />
+Live Site: https://kchhan.github.io/my-library-react/dist/index.html <br />
 Vanilla JS version: https://github.com/kchhan/my-library
 
 ---
